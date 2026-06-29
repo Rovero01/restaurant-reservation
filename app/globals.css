@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg: #f6f8fb;
+  --surface: #ffffff;
+  --surface-strong: #eef4ff;
+  --text: #142033;
+  --muted: #65758b;
+  --line: #dbe3ef;
+  --primary: #4f46e5;
+  --primary-strong: #3730a3;
+  --accent: #14b8a6;
+  --danger: #ef5a45;
+  --warning: #f59e0b;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #0b1120;
+  --surface: #111827;
+  --surface-strong: #182235;
+  --text: #e8eef8;
+  --muted: #9aa8bd;
+  --line: #263247;
+  --primary: #8b5cf6;
+  --primary-strong: #a78bfa;
+  --accent: #2dd4bf;
+  --danger: #fb7185;
+  --warning: #fbbf24;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--primary) 18%, transparent), transparent 34rem),
+    radial-gradient(circle at top right, color-mix(in srgb, var(--accent) 16%, transparent), transparent 30rem),
+    var(--bg);
+  color: var(--text);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+}
