@@ -92,7 +92,7 @@ export default function AdminPage() {
           </div>
         </div>
 
-        <div className="max-h-[68vh] overflow-y-auto p-4">
+        <div className="max-h-[72vh] overflow-y-auto p-4">
           <div className="grid gap-4">
             {filteredGuests.map((guest) => (
               <QueueCard key={guest.id} guest={guest} updateStatus={updateStatus} />
