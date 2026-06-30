@@ -1,39 +1,68 @@
-# Restaurant Waiting List App
+# Restaurant Reservation
 
-A web application for managing online reservations and waiting lists for restaurants, especially all-you-can-eat restaurants with dining time limits.
+Simple waiting-list and reservation prototype for an all-you-can-eat restaurant.
 
-## About
+## Current Focus
 
-This app helps customers reserve a queue slot online and get an estimated time when their table will be ready.  
-Instead of waiting too long at the restaurant, customers can arrive closer to their eating time.
+- Online reservation form
+- Public wait estimate
+- Anonymous customer-facing queue status
+- Admin queue status management
+- Public DineQ landing page with login modal and join CTA`r`n- Responsive dashboard/admin/user routes`r`n- Join flow that creates a company and owner admin
+- Same-day admin queue filtering for active, waiting, dine in, done, and cancelled reservations
 
-This is useful for restaurants that use a fixed dining timer, such as all-you-can-eat restaurants.
+## Backend
 
-## Features
+This app uses Next.js route handlers for the backend and Prisma for PostgreSQL/Supabase.
 
-- Online reservation / waiting list
-- Estimated waiting time
-- Customer queue management
-- Restaurant table availability tracking
-- Dining timer support for all-you-can-eat restaurants
-- Responsive UI
+### Models
 
-## Tech Stack
+- `Company`
+- `Admin` belongs to one `Company`
+- `User` belongs to one `Company`
+- `Admin` and `User` are not related to each other
 
-- Next.js
-- Tailwind CSS
-- JavaScript / TypeScript
-- React
+### CRUD Routes
 
-## Use Case
+- `POST /api/join` - creates a company plus owner admin`r`n- `GET /api/companies`
+- `POST /api/companies`
+- `GET /api/companies/:id`
+- `PATCH /api/companies/:id`
+- `DELETE /api/companies/:id`
+- `GET /api/admins`
+- `POST /api/admins`
+- `GET /api/admins/:id`
+- `PATCH /api/admins/:id`
+- `DELETE /api/admins/:id`
+- `GET /api/users`
+- `POST /api/users`
+- `GET /api/users/:id`
+- `PATCH /api/users/:id`
+- `DELETE /api/users/:id`
 
-A customer wants to eat at an all-you-can-eat restaurant.  
-They join the waiting list online, receive an estimated time, and come to the restaurant when their table is almost ready.
+### Prisma Commands
 
-## Project Goal
+```bash
+pnpm --filter waiting-list prisma:generate
+pnpm --filter waiting-list prisma:migrate
+pnpm --filter waiting-list prisma:studio
+```
+### Seed Data
 
-The goal of this project is to improve restaurant queue management and reduce unnecessary waiting time for customers.
+Default seed data creates 2 companies, each with 2 admins and 2 users.
 
-## Status
+```bash
+pnpm --filter waiting-list prisma:seed
+```
 
-Currently in development.
+Run this after setting `DATABASE_URL` and applying migrations.
+
+Copy `.env.example` to `.env` and set `DATABASE_URL` with your Supabase PostgreSQL connection string before running migrations.
+
+## Future Feature Notes
+
+- Menu availability can be added later for AYCE operations, such as marking popular meat, fish, dessert, or drink items as Available, Limited, or Unavailable.
+- Keep menu availability separate from the reservation MVP so the first version stays focused on waitlist flow and customer arrival timing.
+- Historical queue views can be added later, such as yesterday, weekly, or monthly reservation history and reports.
+
+

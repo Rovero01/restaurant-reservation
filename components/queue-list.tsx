@@ -18,12 +18,12 @@ export function QueueList({
   compact?: boolean;
 }) {
   return (
-    <div className="overflow-hidden rounded-lg border border-[var(--line)] bg-[var(--surface)] shadow-soft">
+    <div className="overflow-hidden rounded-lg border border-[var(--line)] bg-[var(--surface)] shadow-soft overflow-y-auto">
       <div className="flex items-center justify-between border-b border-[var(--line)] px-4 py-3">
         <h2 className="text-base font-semibold text-[var(--text)]">Live Queue</h2>
         <span className="text-sm text-[var(--muted)]">{guests.length} reservations</span>
       </div>
-      <div className="divide-y divide-[var(--line)]">
+      <div className="divide-y divide-[var(--line)] max-h-[70vh]">
         {guests.map((guest, index) => (
           <article key={guest.id} className="grid gap-3 p-4 transition hover:bg-[var(--surface-strong)] md:grid-cols-[1.1fr_0.7fr_0.7fr_0.8fr] md:items-center">
             <div className="min-w-0">

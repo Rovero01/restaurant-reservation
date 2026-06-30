@@ -7,10 +7,10 @@ import { CalendarCheck, ClipboardList, LayoutDashboard, Moon, Palette, Sun } fro
 import { useTheme } from "@/components/theme-provider";
 
 const navItems = [
-  { href: "/", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin", label: "Admin", icon: ClipboardList },
   { href: "/user", label: "User", icon: CalendarCheck },
-  { href: "/retro", label: "Retro", icon: Palette }
+  // { href: "/retro", label: "Retro", icon: Palette }
 ];
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -41,7 +41,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <nav className="grid grid-cols-4 gap-1 rounded-lg border border-[var(--line)] bg-[var(--surface-strong)] p-1">
+            <nav className="grid grid-cols-3 gap-1 rounded-lg border border-[var(--line)] bg-[var(--surface-strong)] p-1">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const active = pathname === item.href;
@@ -84,3 +84,4 @@ export function AppShell({ children }: { children: ReactNode }) {
     </main>
   );
 }
+
